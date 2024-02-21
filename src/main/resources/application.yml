@@ -1,0 +1,18 @@
+quarkus:
+  http:
+    root-path: /api
+    cors: true
+    host: localhost
+
+  # Database
+  flyway:
+    migrate-at-start: true
+  datasource:
+    db-kind: postgresql
+    username: root
+    password: pass
+    jdbc:
+      driver: org.postgresql.Driver
+      url: jdbc:postgresql://localhost:5432/eval-appart
+  hibernate-orm:
+    physical-naming-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
