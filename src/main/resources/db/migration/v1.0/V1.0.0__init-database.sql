@@ -4,7 +4,7 @@ create table immeuble
     adresse           varchar(255) not null,
     code_postal       varchar(255) not null,
     ville             varchar(255) not null,
-    date_construction timestamp         not null
+    date_construction date         not null
 );
 
 create table proprietaire
@@ -34,7 +34,6 @@ create table locataire
     id             uuid primary key,
     nom            varchar(255) not null,
     prenom         varchar(255) not null,
-    principal      boolean      not null,
     appartement_id uuid         not null,
     foreign key (appartement_id) references appartement (id)
 );
@@ -60,7 +59,7 @@ create table equipement
     id              uuid primary key,
     type            varchar(255) not null,
     securite        boolean      not null,
-    date_inspection timestamp
+    date_inspection date
 );
 
 create table immeuble_equipement

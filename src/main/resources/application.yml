@@ -1,6 +1,9 @@
 quarkus:
+  swagger-ui:
+    path: /swagger-ui
+    enable: true
+
   http:
-    root-path: /api
     cors: true
     host: localhost
 
@@ -9,10 +12,25 @@ quarkus:
     migrate-at-start: true
   datasource:
     db-kind: postgresql
-    username: root
-    password: pass
+    username: ${POSTGRES_USER_FW:default_user}
+    password: ${POSTGRES_PASSWORD_FW:default_pass}
     jdbc:
-      driver: org.postgresql.Driver
-      url: jdbc:postgresql://localhost:5432/eval-appart
+      url: jdbc:postgresql://${POSTGRES_HOST:localhost}:${POSTGRES_PORT:5432}/${POSTGRES_DB_FW:default_db}
+
   hibernate-orm:
     physical-naming-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
+
+"%prod":
+  quarkus:
+    http:
+      host: 0.0.0.0
+    datasource:
+      username: ${POSTGRES_USER_PROD:default_user}
+      password: ${POSTGRES_PASSWORD_PROD:default_pass}
+      jdbc:
+        max-size: 90
+        driver: org.postgresql.Driver
+        url: jdbc:postgresql:///postgres
+        additional-jdbc-properties:
+          cloudSqlInstance: eval-appart:europe-west2:eval-appart
+          socketFactory: com.google.cloud.sql.postgres.SocketFactory

@@ -7,7 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.Set;
 import java.util.UUID;
 
@@ -24,7 +24,7 @@ public class Equipement implements Serializable {
     private TypeEquipement type;
 
     private Boolean securite;
-    private LocalDateTime dateInspection;
+    private LocalDate dateInspection;
 
     @ManyToMany()
     @JoinTable(

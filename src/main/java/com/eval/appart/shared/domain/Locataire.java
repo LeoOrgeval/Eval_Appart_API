@@ -21,8 +21,6 @@ public class Locataire implements Serializable {
 
     private String prenom;
 
-    private Boolean principal;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "appartement_id")
     private Appartement appartement;

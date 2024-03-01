@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.Set;
 import java.util.UUID;
 
@@ -22,14 +22,14 @@ public class Immeuble implements Serializable {
     private String adresse;
     private String codePostal;
     private String ville;
-    private LocalDateTime dateConstruction;
+    private LocalDate dateConstruction;
 
     @OneToMany(
             mappedBy = "immeuble",
             cascade = CascadeType.REMOVE
     )
     private Set<Appartement> appartements;
-    
+
     @ManyToMany()
     @JoinTable(
             name = "immeuble_equipement",

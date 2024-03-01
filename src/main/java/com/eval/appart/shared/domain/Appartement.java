@@ -30,6 +30,14 @@ public class Appartement implements Serializable  {
     @JoinColumn(name = "immeuble_id")
     private Immeuble immeuble;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "proprietaire_id")
+    private Proprietaire proprietaire;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "locataire_principal_id")
+    private Locataire locatairePrincipal;
+
     @ManyToMany()
     @JoinTable(
             name = "appartement_option",
