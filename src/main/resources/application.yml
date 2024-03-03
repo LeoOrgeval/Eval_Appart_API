@@ -25,8 +25,8 @@ quarkus:
     http:
       host: 0.0.0.0
     datasource:
-      username: ${POSTGRES_USER_PROD:default_user}
-      password: ${POSTGRES_PASSWORD_PROD:default_pass}
+      username: postgres
+      password: 12345678
       jdbc:
         max-size: 90
         driver: org.postgresql.Driver
