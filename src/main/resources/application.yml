@@ -2,6 +2,7 @@ quarkus:
   swagger-ui:
     path: /swagger-ui
     enable: true
+    always-include: true
 
   http:
     cors: true
